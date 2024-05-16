@@ -8,6 +8,20 @@
     android:padding="16dp"
     tools:context=".MainActivity">
 
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            app:layout_scrollFlags="enterAlways|scroll">
+
+        </androidx.appcompat.widget.Toolbar>
+
+    </com.google.android.material.appbar.AppBarLayout>
+
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="160dp"
@@ -21,6 +35,7 @@
         android:background="@drawable/rounded_corner"
         android:backgroundTint="@color/blue"
         android:padding="8dp">
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -40,7 +55,6 @@
             android:textStyle="italic"
             android:textColor="@color/white"/>
 
-
     </LinearLayout>
 
     <TextView
@@ -51,10 +65,11 @@
         android:layout_marginTop="16dp"
         android:layout_marginStart="4dp"
         android:textStyle="bold"/>
-    
+
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content">
+
         <ProgressBar
             android:layout_width="20dp"
             android:layout_height="20dp"
@@ -62,7 +77,6 @@
             android:id="@+id/progress_bar"
             android:visibility="gone"/>
 
-        
         <androidx.recyclerview.widget.RecyclerView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
