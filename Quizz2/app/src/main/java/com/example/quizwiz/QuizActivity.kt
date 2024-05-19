@@ -12,19 +12,48 @@ import androidx.core.content.ContextCompat
 import com.example.quizwiz.databinding.ActivityQuizBinding
 import com.example.quizwiz.databinding.ScoreDialogBinding
 
+/**
+ * The activity for conducting the quiz in the QuizWiz app.
+ *
+ * This activity allows users to answer quiz questions within a specified time limit.
+ *
+ * @constructor Creates an instance of QuizActivity.
+ */
 class QuizActivity : AppCompatActivity(), View.OnClickListener {
 
+    /**
+     * List of question models for the quiz.
+     */
     companion object {
         var questionModelList: List<QuestionModel> = listOf()
         var time: String = ""
     }
 
+    /**
+     * View binding for the activity.
+     */
     lateinit var binding: ActivityQuizBinding
 
+    /**
+     * Index of the current question being displayed.
+     */
     var currentQuestionIndex = 0
+
+    /**
+     * Selected answer by the user.
+     */
     var selectedAns = ""
+
+    /**
+     * Score obtained by the user.
+     */
     var score = 0
 
+    /**
+     * Called when the activity is starting.
+     *
+     * @param savedInstanceState If the activity is being re-initialized after previously being shut down, this Bundle contains the data it most recently supplied in [onSaveInstanceState].
+     */
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityQuizBinding.inflate(layoutInflater)
@@ -49,6 +78,9 @@ class QuizActivity : AppCompatActivity(), View.OnClickListener {
         startTimer()
     }
 
+    /**
+     * Starts the countdown timer for the quiz.
+     */
     private fun startTimer() {
         val totalTimeInMillis = time.toInt() * 60 * 1000L
         object : CountDownTimer(totalTimeInMillis, 1000L) {
@@ -65,6 +97,9 @@ class QuizActivity : AppCompatActivity(), View.OnClickListener {
         }.start()
     }
 
+    /**
+     * Loads questions for the quiz.
+     */
     private fun loadQuestions() {
         selectedAns = ""
         if (currentQuestionIndex == questionModelList.size) {
@@ -84,6 +119,11 @@ class QuizActivity : AppCompatActivity(), View.OnClickListener {
         }
     }
 
+    /**
+     * Handles click events for buttons.
+     *
+     * @param view The view that was clicked.
+     */
     override fun onClick(view: View?) {
 
         binding.apply {
@@ -107,6 +147,9 @@ class QuizActivity : AppCompatActivity(), View.OnClickListener {
         }
     }
 
+    /**
+     * Finishes the quiz and displays the score.
+     */
     private fun finishQuiz() {
         val totalQuestions = questionModelList.size
         val percentage = ((score.toFloat() / totalQuestions.toFloat()) * 100).toInt()
@@ -133,3 +176,4 @@ class QuizActivity : AppCompatActivity(), View.OnClickListener {
             .show()
     }
 }
+

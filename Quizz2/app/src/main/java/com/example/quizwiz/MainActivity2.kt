@@ -5,10 +5,30 @@ import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 
+/**
+ * The second activity of the QuizWiz app.
+ *
+ * This activity provides options for the user to either start the quiz or exit the app.
+ *
+ * @constructor Creates an instance of MainActivity2.
+ */
 class MainActivity2 : AppCompatActivity() {
+
+    /**
+     * Button to start the quiz.
+     */
     lateinit var playButton: Button
+
+    /**
+     * Button to exit the app.
+     */
     lateinit var exitButton: Button
 
+    /**
+     * Called when the activity is starting.
+     *
+     * @param savedInstanceState If the activity is being re-initialized after previously being shut down, this Bundle contains the data it most recently supplied in [onSaveInstanceState].
+     */
     public override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main2)
