@@ -13,7 +13,7 @@ import com.google.firebase.database.FirebaseDatabase
 class MainActivity : AppCompatActivity() {
     lateinit var binding: ActivityMainBinding
     lateinit var quizModellist: MutableList<QuizModel>
-    lateinit var adapter: QuizListAdapter
+    internal lateinit var adapter: QuizListAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -37,7 +37,7 @@ class MainActivity : AppCompatActivity() {
         when (item.itemId) {
             R.id.item1 -> {
                 Toast.makeText(this@MainActivity, "Closing app...", Toast.LENGTH_SHORT).show()
-                finish() // This will close the activity
+                finishAffinity() // This will close the activity
             }
 
         }
@@ -45,7 +45,7 @@ class MainActivity : AppCompatActivity() {
         return super.onOptionsItemSelected(item)
     }
 
-    private fun setupRecycleView() {
+    fun setupRecycleView() {
         binding.progressBar.visibility = View.GONE
         adapter = QuizListAdapter(quizModellist)
         binding.recyclerViewItems.layoutManager = LinearLayoutManager(this)
